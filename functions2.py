@@ -108,3 +108,61 @@ print(HRfilms)                          # |
 # for movies in movies_list - проходится по каждому элементу списка
 # movies.get("imdb") - достается значение imdb
 # if movies.get("imdb") > 5.5 - проверяется условие
+
+
+
+
+
+# Write a function that takes a category name and returns just those movies under that category.
+
+def get_by_category(movies, category):
+    category_movies = [movie for movie in movies if movies.get("category") == category]
+    return category_movies
+
+category_name = input()
+action_movies = get_by_category(movies, category_name)
+print(action_movies)
+
+
+
+
+
+
+
+# Write a function that takes a category and computes the average IMDB score.
+
+def average_imdb_by_category(movies, category):
+    total_score = 0
+    num_movies = 0
+    for movie in movies:
+        if movies.get(category) == category:
+            num_movies += 1
+            total_score += movie.get("imdb")
+            
+    average_score = total_score / num_movies
+    return average_score
+
+category = input()
+last_average_score = average_imdb_by_category(movies, category)
+print(last_average_score)
+
+
+
+
+
+# Write a function that takes a list of movies and computes the average IMDB score.
+
+
+def total_imdb_average(movies):
+    total_score = 0
+    num_movies = 0
+    for movie in movies:
+        num_movies += 1
+        total_score += movie.get("imdb")
+            
+    average_score = total_score / num_movies
+    return average_score
+
+
+uwu_average_score = total_imdb_average(movies)
+print(uwu_average_score)
