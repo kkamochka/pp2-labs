@@ -89,6 +89,6 @@ class Account:
             self.balance -= amount
             print({amount}, {self.balance})
         else:
-            print(nin)
+            print("nin")
 
 
