@@ -3,7 +3,11 @@
 
 
 class String:
-    def __init__(self):   #__init__ — это специальная функция, которая вызывается при создании нового объекта класса.
+    def __init__(self, x, y, z): 
+        self.x = x
+        self.y = y
+        self.z = z
+        #__init__ — это специальная функция, которая вызывается при создании нового объекта класса.
         self.input_string = ""   #self — это ссылка на текущий экземпляр класса. Это способ обращения к атрибутам и методам класса изнутри самого класса.
 
 
@@ -14,7 +18,7 @@ class String:
         print(self.input_string.upper())
 
 
-task = String()
+task = String(1, 2, 3)
 task.getString()
 task.printString()
 
@@ -23,11 +27,11 @@ task.printString()
 # Both classes have a area function which can print the area of the shape where Shape's area is 0 by default.
 
 class Shape:
-    def __init__(self) : #init function which takes a length as argument. !!!
+    def __init__(self) :  
         pass
 class Square(Shape):
     def __init__(self, length):
-        self.length = length
+        self.length = length 
 
     def Area(self):
         return self.length * self.length
@@ -44,7 +48,7 @@ print(Square.Area())
 # Define a class named Rectangle which inherits from Shape class from task 2. Class instance can be constructed by a length and width. 
 # The Rectangle class has a method which can compute the area.
 
-class Shape:
+class Shape: #фигура ат екен
     def __init__(self):
         pass
 
@@ -53,7 +57,7 @@ class Shape:
 
 class Rectangle(Shape):
     def __init__(self, length, width):
-        super().__init__()
+        super().__init__() # нога папы -> моя нога; типо унаследование 
         self.length = length
         self.width = width
 
@@ -85,10 +89,10 @@ class Account:
         print({amount}, {self.balance})
 
     def withdraw(self, amount):
-        if amount <= self.balance:
+        if amount <= self.balance:  # <= - меньше равно
             self.balance -= amount
             print({amount}, {self.balance})
         else:
-            print("nin")
+            print("lox ty ne bogat, plach")
 
 
