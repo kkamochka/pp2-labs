@@ -53,7 +53,7 @@ def prime(num):
     return True
 
 def filtered_num(numbers):
-    return [num for num in numbers if prime(num)]
+    return [num for num in numbers if prime(num)] #квадратные скобки - список -> если это число простое, то выполняем
 
 
 numbers = int(input())
@@ -61,3 +61,75 @@ prime_numbers = filtered_num = (numbers)
 
 print(numbers, "was filtered into", prime_numbers)
 
+
+
+
+# Write a function that accepts string from user and print all permutations of that string.
+
+from itertools import permutations  #itertools - библиотека функций; permutations - перестановки
+
+def print_permutations(input_string):
+    perms = permutations(input_string) # лист????
+
+    for perm in perms:
+        print(perm, end = " ") #для вывода через пробел разные значения
+        
+        
+user_input = input("Enter a string: ")
+
+print("All Permutations:")
+print_permutations(user_input)
+
+    
+#Write a function that accepts string from user, return a sentence with the words reversed. We are ready -> ready are We
+
+from itertools import permutations
+
+def print_permutations(input_string):
+    perms = permutations(input_string)
+    
+    
+    
+    
+    
+#Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+
+def has_33(nums):
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i - 1] and nums[i] == 3:
+            return True
+    return False
+
+has_33([1, 3, 3]) # True
+has_33([1, 3, 1, 3]) # False
+has_33([3, 1, 3]) # False
+
+
+# Write a function that takes in a list of integers and returns True if it contains 007 in order
+def spy_game(nums):
+    n = len(nums)
+    for i in range(n):
+        if nums[i] == 0:
+            for j in range(i + 1, n):
+                if nums[j] == 0:
+                    for h in range(j + 1, n):
+                        if nums[h] == 7:
+                            return True
+    return False
+
+spy_game([1,2,4,0,0,7,5]) # --> True
+spy_game([1,0,2,4,0,5,7]) # --> True
+spy_game([1,7,2,0,4,5,0]) # --> False
+
+
+# Write a function that computes the volume of a sphere given its radius.
+
+def fvolume(r):
+    volume = 4/3 * 3,14 * r ** 3
+    return volume
+r = int(input())
+Volume = fvolume(r)
+print (Volume)
+
+# Define a functino histogram() that takes a list of integers and prints a histogram to the screen.
+# For example, histogram([4, 9, 7]) should print the following:
