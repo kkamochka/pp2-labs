@@ -133,3 +133,16 @@ print (Volume)
 
 # Define a functino histogram() that takes a list of integers and prints a histogram to the screen.
 # For example, histogram([4, 9, 7]) should print the following:
+
+def histogram(nums):
+    for i in nums:
+        print('*' * i) 
+        
+        
+# Write a program able to play the "Guess the number" - game, where the number to be guessed is randomly chosen between 1 and 20. This is how it should work when run in a terminal:
+
+def vsedelatsrazu():
+    print("Hello! What is your name?")
+    name = input()
+    print(f"Well, {name}, I am thinking of a number between 1 and 20. \nTake a guess.")
+    
