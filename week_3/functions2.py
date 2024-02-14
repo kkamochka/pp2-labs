@@ -166,3 +166,4 @@ def total_imdb_average(movies):
 
 uwu_average_score = total_imdb_average(movies)
 print(uwu_average_score)
+len()

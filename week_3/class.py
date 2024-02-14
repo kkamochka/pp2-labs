@@ -96,3 +96,20 @@ class Account:
             print("lox ty ne bogat, plach")
 
 
+class Person():
+    def _init_(self):
+        pass
+class Student(Person):
+    def _init_(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def info(self):
+        print(self.name + self.age)
+    
+St1 = Student("aaa", 12)
+St1.info()
+
+
+
+
