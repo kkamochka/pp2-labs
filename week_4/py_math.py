@@ -16,4 +16,4 @@ class Trapezoid(Area):
         print( (self.base1 + self.base2)/2 *self.height )
 
 Data = Trapezoid(6, 5, 5)
-Data.solving()
+Data.solving() 
