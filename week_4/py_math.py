@@ -37,3 +37,18 @@ length = float(input())
 Area = calculate_polygon_area(sides, length)
 
 print ("The area of the polygon is: ", Area)
+
+
+# Write a Python program to calculate the area of a parallelogram
+
+import math
+
+def area_of_parallelogram(a, h):
+    
+    area = a * h
+    
+base = int(input())
+height = int(input())
+    
+Area = area_of_parallelogram(base, height)
+    
