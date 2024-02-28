@@ -82,3 +82,38 @@ iterator = iter(Class)
 
 for i in iterator:
     print(i, end="")
+    
+
+
+# Implement a generator called squares to yield the square of all numbers from (a) to (b).
+# Test it with a "for" loop and print each of the yielded values.
+
+def square_y(a, b):
+    for i in range(a, b + 1):
+        yield i * i
+
+
+a, b = map(int, input().split())
+
+list = square_y(a, b)
+print(*list)
+
+
+for i in range(a, b + 1):
+    print(i * i, end=" ")
+    
+    
+# Implement a generator that returns all numbers from (n) down to 0.
+
+def implementor(n):
+    for i in range(n, -1, -1):
+        yield i
+
+
+n = int(input())
+list = implementor(n)
+print(*list)
+    
+    
+    
+    
