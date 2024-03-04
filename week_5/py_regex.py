@@ -3,8 +3,8 @@
 import re
 from row import txt
 
-x = re.search("ab*", txt) #ab* - * используется для 
-print(x)
+x = re.search("ab*", txt) #
+print(x)                  #ab* - позволяет b-шке повторяться 0 или бесконечно раз; + - как миниммум 1 раз
 
 
 # Write a Python program that matches a string that
@@ -13,10 +13,10 @@ print(x)
 import re
 from row import txt
 
-x = re.search("a(b{2}b?)", txt)
+x = re.search("a(b{2}b?)", txt)  #a{...} - количество раз повторения определенного знака ; ? - повторение 0 или 1 раз
 
 print(x)
-
+                                 #$ - конец строки; ^ - начало строки
 
 
 # Write a Python program to find sequences
