@@ -1,0 +1,58 @@
+# Write a Python program with builtin function to multiply all the numbers in a list
+import math
+
+array1 = [1, 2, 3]
+array2 = [1, 2, 3, 4]
+
+print(math.prod(array1))
+print(math.prod(array2))
+
+# Write a Python program with builtin function that accepts a string
+# and calculate the number of upper case letters and lower case letters
+
+def calculate(s):
+    counter_up, counter_down = 0, 0
+    for i in s:
+        if i.isupper():
+            counter_up += 1
+        elif i.islower():
+            counter_down += 1
+    
+    print(f"lower case letters: {counter_down}")
+    print(f"upper case letters: {counter_up}")
+
+
+calculate("AaBbCcDD")
+
+
+# Write a Python program with builtin function that checks whether a passed string is palindrome or not.
+def isPalindrome(s):
+    if s == s[::-1]:
+        return True
+    return False
+
+s1 = "abcda"
+s2 = "aboba"
+
+print(isPalindrome(s1))
+print(isPalindrome(s2))
+
+# Write a Python program that invoke square root function after specific milliseconds.
+from time import sleep
+
+root = int(input())
+delaychik = int(input())
+
+sleep(delaychik / 1000)
+print(f'Square root of {root} after {delaychik} miliseconds is {root ** 0.5}')
+
+
+# Write a Python program with builtin function that returns True if all elements of the tuple are true.
+def func(arraychik):
+    return all(arraychik)
+
+array1 = [1, 2, 3]
+array2 = [1, 0, 2]
+
+print(func(array1))
+print(func(array2))
