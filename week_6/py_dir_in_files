@@ -1,0 +1,96 @@
+# Write a Python program to list only directories, files and all directories, files in a specified path.
+import os
+
+def only_dir(path):
+    listik = [dir for dir in os.listdir(path) if os.path.isdir(os.path.join(path, dir))]
+    print(listik)
+
+
+def only_files(path):
+    listik = [dir for dir in os.listdir(path) if os.path.isfile(os.path.join(path, dir))]
+    print(listik)
+
+
+def doublegis(path):
+    listik = [dir for dir in os.listdir(path)]
+    print(listik)
+
+
+path = "/pp2-labki" # nado dopolnit'
+doublegis(path)
+only_dir(path)
+only_files(path)
+
+
+
+
+# Write a Python program to check for access to a specified path.
+# Test the existence, readability, writability and executability of the specified path
+import os
+
+def checker(path):
+    if os.access(path, os.F_OK):
+        print("The path exists")
+    else:
+        print("The path does not exists")
+
+    if os.access(path, os.R_OK):
+        print("The path is readable")
+    else:
+        print("The path is not readable")
+    
+    if os.access(path, os.W_OK):
+        print("The path is writable")
+    else:
+        print("The path is not writable")
+    
+    if os.access(path, os.X_OK):
+        print("The path is executable")
+    else:
+        print("The path is not executable")
+
+
+direct = os.getcwd()
+pathik = os.path.join(direct, "something.txt")
+
+print(pathik)
+checker(pathik)
+
+
+# Write a Python program to test whether a given path exists or not.
+# If the path exist find the filename and directory portion of the given path.
+import os
+
+direct = os.getcwd()
+path = os.path.join(direct, "something.txt")
+
+if not os.access(path, os.F_OK):
+    print("The path does not exist")
+else:
+    print(f'Filename is: {os.path.basename(path)}')
+    print(f'Directory portion is: {os.path.dirname(path)}')
+    
+    
+    
+# Write a Python program to count the number of lines in a text file.
+import os 
+
+direct = os.getcwd()
+path = os.path.join(direct, "something.txt")
+
+f, counter = open(path, "r"), 0
+for _ in f:
+    counter += 1
+
+print(counter)
+
+
+
+# Write a Python program to write a list to a file.
+file_name = "something2.txt"
+some_list = ['data', str(2), str(3)]
+
+f = open(file_name, "a")
+for i in some_list:
+    f.write(str(i) + ' ')
+f.close()
