@@ -2,21 +2,21 @@
 import os
 
 def only_dir(path):
-    listik = [dir for dir in os.listdir(path) if os.path.isdir(os.path.join(path, dir))]
-    print(listik)
+    list1 = [dir for dir in os.listdir(path) if os.path.isdir(os.path.join(path, dir))]
+    print(list1)
 
 
 def only_files(path):
-    listik = [dir for dir in os.listdir(path) if os.path.isfile(os.path.join(path, dir))]
-    print(listik)
+    list1 = [dir for dir in os.listdir(path) if os.path.isfile(os.path.join(path, dir))]
+    print(list1)
 
 
 def doublegis(path):
-    listik = [dir for dir in os.listdir(path)]
-    print(listik)
+    list1 = [dir for dir in os.listdir(path)]
+    print(list1)
 
 
-path = "/pp2-labki" # nado dopolnit'
+path = os.getcwd()
 doublegis(path)
 only_dir(path)
 only_files(path)
@@ -51,10 +51,10 @@ def checker(path):
 
 
 direct = os.getcwd()
-pathik = os.path.join(direct, "something.txt")
+path = os.path.join(direct, "something.txt")
 
-print(pathik)
-checker(pathik)
+print(path)
+checker(path)
 
 
 # Write a Python program to test whether a given path exists or not.
