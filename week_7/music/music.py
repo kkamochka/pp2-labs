@@ -1,5 +1,6 @@
 import pygame
 import os
+import sys
 pygame.init()
 
 W, H = 850, 850
@@ -38,13 +39,11 @@ def get_song_name():
 
 running = True
 while running:
-    
-    pygame.display.update()
-    
-    for i in pygame.i.get():
-        if i.type == quit:
-            running = False
+    for event in pygame.event.get():
+        if event.type == quit:
             pygame.quit()
+            sys.exit()
+    pygame.display.update()
             
             
     buttons = pygame.key.get_pressed()
