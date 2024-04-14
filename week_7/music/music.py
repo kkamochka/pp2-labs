@@ -67,8 +67,6 @@ import sys
 pygame.init()
 
 W, H = 850, 850
-
-# Создание окна Pygame
 display = pygame.display.set_mode([W, H])
 
 # Получение списка файлов из папки с музыкой
@@ -105,12 +103,9 @@ while running:
         elif event.type == SONG_END: # Обработка конца текущей песни
             play_next_song()
 
-    # Обновление экрана
     pygame.display.update()
 
-    # Получение нажатых клавиш
     keys = pygame.key.get_pressed()
-    
     if keys[pygame.K_UP]: # Воспроизведение текущей песни
         if not pygame.mixer.music.get_busy():
             pygame.mixer.music.load(os.path.join(path, "week_7/music", songs[current_song_index]))
