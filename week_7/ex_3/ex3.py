@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 
 W, H = 1200, 800
 display = pygame.display.set_mode((W, H))
-pygame.display.set_caption()
+pygame.display.set_caption("uuu")
 
 # Circle
 pos = [W // 2, H // 2]
