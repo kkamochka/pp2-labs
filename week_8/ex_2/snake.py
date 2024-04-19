@@ -70,7 +70,7 @@ while True:
                     pygame.K_a: 0
                 }
     
-    screen.fill('black')
+    screen.fill('white')
 
     if length % 3 == 0:
         time_step = max(60, time_step - 10)

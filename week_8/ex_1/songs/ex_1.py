@@ -15,6 +15,7 @@
 
 
 import pygame, sys
+import os
 from pygame.locals import *
 import random, time
 
@@ -24,6 +25,10 @@ pygame.init()
 #Setting up FPS 
 FPS = 60
 FramePerSec = pygame.time.Clock()
+
+
+path = os.getcwd()
+
 
 #Creating colors
 BLUE  = (0, 0, 255)
@@ -44,7 +49,7 @@ font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
 
-background = pygame.image.load("week_8/ex_1/sprites/AnimatedStreet.png")
+background = pygame.image.load(path, "week_8/ex_1/sprites/AnimatedStreet.png")
 
 #Create a white screen 
 DISPLAYSURF = pygame.display.set_mode((400,600))
@@ -55,7 +60,7 @@ pygame.display.set_caption("Game")
 class Enemy(pygame.sprite.Sprite):
       def __init__(self):
         super().__init__() 
-        self.image = pygame.image.load("week_8/ex_1//sprites//Enemy.png")
+        self.image = pygame.image.load(path, "week_8/ex_1//sprites//Enemy.png")
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40,SCREEN_WIDTH-40), 0)
 
@@ -71,7 +76,7 @@ class Enemy(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        self.image = pygame.image.load("week_8/ex_1/sprites/Player.png")
+        self.image = pygame.image.load(path, "week_8/ex_1/sprites/Player.png")
         self.rect = self.image.get_rect()
         self.rect.center = (160, 520)
        
@@ -90,7 +95,7 @@ class Player(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
             super().__init__() 
-            self.image = pygame.image.load("week_8/ex_1/sprites/Coin.png")
+            self.image = pygame.image.load(path, "week_8/ex_1/sprites/Coin.png")
             self.image = pygame.transform.scale(self.image, (50, 50))
 
             self.rect = self.image.get_rect()
@@ -150,7 +155,7 @@ while True:
 
     #To be run if collision occurs between Player and Enemy
     if pygame.sprite.spritecollideany(P1, enemies):
-          pygame.mixer.Sound('week_8/ex_1/songs//crash.wav').play()
+          pygame.mixer.Sound(path, 'week_8/ex_1/songs//crash.wav').play()
           time.sleep(1)
                    
           DISPLAYSURF.fill(RED)
