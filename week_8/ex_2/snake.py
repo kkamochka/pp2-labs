@@ -1,103 +1,229 @@
-
 import pygame
-import sys
-from random import randrange
+import random
+import datetime
 
+def game_over(red,w,h):
+    text = font.render("Press space to play again",True, red) 
+    text_rect = text.get_rect(center = (w//2,h//2))
+    screen.blit(text,text_rect)
+def score(counter,white):
+    text = font_for_score.render(f"Score: {counter}",True,white)
+    text_rect = text.get_rect(center = (60,20))
+    screen.blit(text,text_rect)
+def level(lev,white):
+    text = font_for_score.render(f"lv: {lev}",True,white)
+    text_rect = text.get_rect(center = (50,45))
+    screen.blit(text,text_rect)
+   
+w, h = 900,700
+pygame.init()
+screen = pygame.display.set_mode((w,h))
+pygame.display.set_caption("Snake")
+run = True
+white = (255,255,255)
+black = (0,0,0)
+green = (0,255,0)
+red = (255,0,0)
+x,y = w//2,h//2
+pos = (x,y,50,50)
+z,t = random.choice(range(1,800)),random.choice(range(1,600))
 
-WINDOW = 500
-TILE_SIZE = 25
-RANGE = (TILE_SIZE // 2, WINDOW - TILE_SIZE // 2, TILE_SIZE)
-get_random_position = lambda: [randrange(*RANGE), randrange(*RANGE)]
+font = pygame.font.SysFont('Times New Roman',70)
+font_for_score = pygame.font.SysFont("Times New Roman",30)
+apple = pygame.image.load("pp2/lectures/week_8/pictures/apple.png")
+apple_rect = apple.get_rect(center = (z,t))
 
-snake = pygame.rect.Rect([0, 0, TILE_SIZE - 2, TILE_SIZE - 2])
-snake.center = get_random_position()
-length = 1
-segments = [snake.copy()]
-snake_dir = (0, 0)
-
-food = snake.copy()
-food.center = get_random_position()
-
-wall = snake.copy()
-wall.center = get_random_position()
-
-time, time_step = 0, 110
-screen = pygame.display.set_mode([WINDOW] * 2)
+flag_left = False
+flag_right = False
+flag_up = False
+flag_down = False
+game = True
 clock = pygame.time.Clock()
+fps = 20
+once = True
+counter = 0
+lev = 0
+length = False
+g,a = 50,50
+q = 10
+segments = [pos]
+press_r = True #эти флаги нужны чтобы не двигаться в обратном направление если движется вправо то нажать на лево нельзя
+press_up = True
+press_down = True
+press_l = True
+flag = False
 
-dirs = {
-    pygame.K_w: 1,
-    pygame.K_s: 1,
-    pygame.K_d: 1,
-    pygame.K_a: 1
-}
-
-while True:
+while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            exit()
+            run = False
+
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w and dirs[pygame.K_w]:
-                snake_dir = (0, -TILE_SIZE)
-                dirs = {
-                    pygame.K_w: 1,
-                    pygame.K_s: 0,
-                    pygame.K_d: 1,
-                    pygame.K_a: 1
-                }
-            if event.key == pygame.K_s and dirs[pygame.K_s]:
-                snake_dir = (0, TILE_SIZE)
-                dirs = {
-                    pygame.K_w: 0,
-                    pygame.K_s: 1,
-                    pygame.K_d: 1,
-                    pygame.K_a: 1
-                }
-            if event.key == pygame.K_a and dirs[pygame.K_a]:
-                snake_dir = (-TILE_SIZE, 0)
-                dirs = {
-                    pygame.K_w: 1,
-                    pygame.K_s: 1,
-                    pygame.K_d: 0,
-                    pygame.K_a: 1
-                }
-            if event.key == pygame.K_d and dirs[pygame.K_d]:
-                snake_dir = (TILE_SIZE, 0)
-                dirs = {
-                    pygame.K_w: 1,
-                    pygame.K_s: 1,
-                    pygame.K_d: 1,
-                    pygame.K_a: 0
-                }
+            if event.key == pygame.K_SPACE:
+                counter = 0
+                lev = 0
+                q = 10
+                game = True
+                x,y = w//2,h//2
+                pos = (x,y,50,50)
+                segments.clear()
+        
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                counter = 0
+                lev = 0
+                q = 10
+                game = True
+                x,y = w//2,h//2
+                pos = (x,y,50,50)
+                segments.clear()
+                
+            if event.key == pygame.K_LEFT and press_l:
+                if game:
+                   flag_left = True
+                   flag_right = False
+                   flag_up = False
+                   flag_down = False
+                
+            elif event.key == pygame.K_RIGHT and press_r:
+                if game:
+                   flag_left = False
+                   flag_right = True
+                   flag_up = False
+                   flag_down = False
+                
+            elif event.key == pygame.K_UP and press_up:   
+                if game:
+                   flag_left = False
+                   flag_right = False
+                   flag_up = True
+                   flag_down = False
+                   
+            elif event.key == pygame.K_DOWN and press_down:
+                if game:
+                   flag_left = False
+                   flag_right = False
+                   flag_up = False
+                   flag_down = True
+                
+    screen.fill(black)
+    score(counter,white)
+    level(lev,white)
+
+    if current_time + datetime.timedelta(seconds = 5) <= datetime.datetime.now():
+        if game:
+           change_cord_apple = True
+        
+
+    if once: #once нужен для того чтобы шарик рисовался в одном месте пока змейка не соприкоснется с ним
+        apple_rect = apple.get_rect(center = (z,t))
+        green_rect = apple_green.get_rect(center = (z,t))
+        yellow_rect = apple_yellow.get_rect(center = (z,t))
+        if number == 1:
+           screen.blit(apple,apple_rect)
+        elif number == 2:
+            screen.blit(apple_green,green_rect)
+        elif number == 3:
+            screen.blit(apple_yellow,yellow_rect)
+
     
-    screen.fill('black')
+    if abs(x - z) <= 60 and abs(y - t) <= 62:
+        counter += 1
+        if counter % 5 == 0:
+           lev += 1
+           flag = True
+        once = False
+        if number == 2:
+            q += 0.5 #если съел зеленое яблоко то скорость увеличивается на 0.5 и размер на 0.5 станет больше
+        elif number == 3:
+            q += 1
+        change_cord_apple = True
+        
+    else:
+        once = True
+        if len(segments) != 0:# из за того что очищаю список когда нажимаю на пробел пришлось сделать это условие когда только есть элементы в списке только тогда удалять
+           segments.pop(0)
 
-    if length % 3 == 0:
-        time_step = max(60, time_step - 10)
+    if change_cord_apple:
+        r,i = z,t
+        z,t = random.choice(range(50,840)),random.choice(range(50,640))
+        number = random.choice(range(1,4))
+        if (r == z and i == t) or (z == x and t == y): #меняем координаты заново если шарик создался на змейке или на том же месте где только что съели
+           z,t = random.choice(range(1,800)),random.choice(range(1,600))
+           apple_rect = apple.get_rect(center = (z,t))
+           screen.blit(apple,apple_rect)
+        current_time = datetime.datetime.now()
+        current_seconds = current_time.second
+        change_cord_apple = False
 
-    self_eating = pygame.Rect.collidelist(snake, segments[-2::-1]) != -1
-    if snake.left < 0 or snake.right > WINDOW or snake.top < 0 or snake.bottom > WINDOW or self_eating or snake.center == wall.center:
-        snake.center, food.center, wall.center = get_random_position(), get_random_position(), get_random_position()
-        length, snake_dir = 1, (0, 0)
-        segments = [snake.copy()]
+        
+    if game == False: #означает змейка дошла границ экрана и отображается текст, в случаи нажатии кнопки пробел game станет true a это значит дальше не будет рисоваться текст а оставшийся текст закрасит черный цвет
+       game_over(white,w,h)
+       flag_left = False
+       flag_right = False
+       flag_up = False
+       flag_down = False
 
-    if snake.center == food.center:
-        food.center = get_random_position()
-        length += 1
-
-
-    pygame.draw.rect(screen, 'red', food)
-
-    pygame.draw.rect(screen, 'white', wall)
-
-    [pygame.draw.rect(screen, 'green', segment) for segment in segments]
-
-    time_now = pygame.time.get_ticks()
-    if time_now - time > time_step:
-        time = time_now
-        snake.move_ip(snake_dir)
-        segments.append(snake.copy())
-        segments = segments[-length:]
-
+    if flag_left:
+       if x <= 7:
+          game = False
+          continue
+       press_r = False
+       press_up = True
+       press_down = True
+       if counter % 5 == 0 and counter != 0 and flag:
+           q += 1
+       flag = False
+       x -= q
+       pos = (x,y,g,a)
+    elif flag_right:
+        if x >= w - 50:
+           game = False
+           continue
+        press_l = False
+        press_up = True
+        press_down = True
+        if counter % 5 == 0 and counter != 0 and flag:
+           q += 1
+        flag = False
+        x += q
+        pos = (x,y,g,a)
+    elif flag_up:
+        if y <= 7:
+           game = False
+           continue
+        press_r = True
+        press_l = True
+        press_down = False
+        if counter % 5 == 0 and counter != 0 and flag:
+           q += 1
+        flag = False
+        y -= q
+        pos = (x,y,g,a)
+    elif flag_down:
+        if y >= h - 50:
+           game = False
+           continue
+        press_r = True
+        press_up = False
+        press_l = True
+        if counter % 5 == 0 and counter != 0 and flag:
+           q += 1
+        flag = False
+        y += q
+        pos = (x, y, g,a)
+    segments.append(pos)
+    
+    for k in range(1, len(segments)):
+        if segments[0] == segments[k]:
+           game = False
+           break
+    for segment in segments:
+        pygame.draw.rect(screen, green, (segment[0],segment[1], g, a))
+        pygame.draw.rect(screen,black,(segment[0],segment[1],g,a),1)
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(fps)
+    
+pygame.quit()
+            
