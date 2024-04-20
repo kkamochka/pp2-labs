@@ -31,13 +31,13 @@ z,t = random.choice(range(1,800)),random.choice(range(1,600))
 font = pygame.font.SysFont('Times New Roman',70)
 font_for_score = pygame.font.SysFont("Times New Roman",30)
 
-apple = pygame.image.load("Labs_pp2/Tsis_8/for_snake/apple.png")
+apple = pygame.image.load("week_8/ex_2/pictures/apple.png")
 apple_rect = apple.get_rect(center = (z,t))
 
-apple_green = pygame.image.load("Labs_pp2/Tsis_8/for_snake/green_apple.png")
+apple_green = pygame.image.load("week_8/ex_2/pictures/green_apple.png")
 green_rect = apple_green.get_rect(center = (z,t))
 
-apple_yellow = pygame.image.load("Labs_pp2/Tsis_8/for_snake/yellow_apple.png")
+apple_yellow = pygame.image.load("week_8/ex_2/pictures/yellow_apple.png")
 yellow_rect = apple_yellow.get_rect(center = (z,t))
 
 flag_left = False
